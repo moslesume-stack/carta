@@ -212,7 +212,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: min(1050px, calc(100vw - 80px));
+    width: min(1250px, calc(100vw - 60px));
     margin: 0 auto;
     padding: 0 10px;
     pointer-events: none;
@@ -263,7 +263,7 @@
 
   .icon-btn img {
     display: block;
-    width: clamp(210px, 23vw, 310px);
+    width: clamp(160px, 17vw, 250px);
     height: auto;
     --hover-scale: 1;
     transform: scale(var(--hover-scale));

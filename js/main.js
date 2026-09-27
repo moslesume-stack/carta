@@ -50,7 +50,7 @@ import { registerPageModule } from './modules/registry.js';
     }
 
     function setColorTheme(theme) {
-      document.body.classList.remove('theme-pink', 'theme-yellow', 'theme-black');
+      document.body.classList.remove('theme-pink', 'theme-yellow', 'theme-black', 'theme-amber');
       if (theme) document.body.classList.add(theme);
       themeParticles.forEach(function (particle) {
         particle.style.color = theme ? '#fff' : '';
@@ -109,7 +109,8 @@ import { registerPageModule } from './modules/registry.js';
   var PAGE_MODULES = {
     firstPage: { html: 'pages/readme.html', script: './modules/readme.js' },
     usPage: { html: 'pages/us.html', script: './modules/us.js' },
-    playlistPage: { html: 'pages/playlist.html', script: './modules/playlist.js' }
+    playlistPage: { html: 'pages/playlist.html', script: './modules/playlist.js' },
+    countdownPage: { html: 'pages/countdown.html', script: './modules/countdown.js' }
   };
 
   var loadedPages = Object.create(null); // pageId -> Promise<void>
@@ -243,6 +244,7 @@ import { registerPageModule } from './modules/registry.js';
         if (btn.id === 'iconMessage') theme = 'theme-pink';
         else if (btn.id === 'iconMemories') theme = 'theme-yellow';
         else if (btn.id === 'iconMusic') theme = 'theme-black';
+        else if (btn.id === 'iconCountdown') theme = 'theme-amber';
         setColorTheme(theme);
 
         window.clearTimeout(iconExitTimer);

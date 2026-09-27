@@ -1,0 +1,7 @@
+{
+  "_comentario": "Para actualizar el contador: cambia 'days', 'hours', 'minutes' y 'segundos' abajo y sube este archivo (commit + push). El contador se reinicia desde ese valor apenas se recarga la página. No borres ningún campo, solo cambia los números.",
+  "days": 7,
+  "hours": 0,
+  "minutes": 0,
+  "seconds": 0
+}

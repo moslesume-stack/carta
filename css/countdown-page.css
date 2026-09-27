@@ -1,0 +1,223 @@
+/* ---------------------------------------------------------------------
+   countdown-page.css — Estilos exclusivos de la página "Cuenta regresiva"
+   (icono 4). Sigue el mismo patrón que las demás páginas: vive detrás de
+   .countdown-page (la sección con ese id), y usa el layout genérico
+   .first-page / .first-page-inner / .first-page-back de base.css.
+   ------------------------------------------------------------------- */
+
+/* Tema de color propio para este icono, igual que pink/yellow/black de
+   los otros 3 (ver setColorTheme en main.js). Un ámbar suave, a tono con
+   el reloj de arena. */
+body.theme-amber::after { background: #d9b98a; opacity: .58; }
+body.theme-amber .heart-particle { color: #fff; }
+
+/* ---------------------------------------------------------------------
+   Encabezado
+   ------------------------------------------------------------------- */
+.countdown-page .countdown-heading {
+  position: absolute;
+  top: clamp(14px, 3vh, 30px);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 5;
+  pointer-events: none;
+  white-space: nowrap;
+}
+.countdown-page .countdown-heading-text {
+  font-family: "Allura", "Segoe Script", "Brush Script MT", cursive;
+  font-size: clamp(30px, 3.2vw, 46px);
+  background: linear-gradient(90deg, #9a6a2f, #d1a15c, #9a6a2f);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: countdown-heading-shine 3.5s linear infinite, countdown-heading-float 3.6s ease-in-out infinite;
+  filter: drop-shadow(0 2px 8px rgba(154, 106, 47, .18));
+}
+.countdown-page .countdown-heading .sparkle {
+  font-size: clamp(16px, 1.6vw, 22px);
+  color: #dcb87f;
+  animation: countdown-sparkle-twinkle 1.8s ease-in-out infinite;
+}
+.countdown-page .countdown-heading .sparkle:last-child { animation-delay: .4s; }
+@keyframes countdown-heading-shine {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+@keyframes countdown-heading-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+@keyframes countdown-sparkle-twinkle {
+  0%, 100% { opacity: .5; transform: scale(.85) rotate(0deg); }
+  50% { opacity: 1; transform: scale(1.2) rotate(14deg); }
+}
+
+/* ---------------------------------------------------------------------
+   Contador grande, centrado
+   ------------------------------------------------------------------- */
+.countdown-inner {
+  flex-direction: column;
+  gap: 0 !important;
+}
+
+.countdown-display {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: clamp(6px, 1.4vw, 18px);
+  flex-wrap: nowrap;
+}
+
+.countdown-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: clamp(64px, 11vw, 128px);
+}
+
+.countdown-number {
+  font-family: Georgia, "Times New Roman", serif;
+  font-variant-numeric: tabular-nums;
+  font-size: clamp(46px, 9vw, 108px);
+  font-weight: 700;
+  line-height: 1;
+  color: #6b4a24;
+  text-shadow: 0 4px 14px rgba(107, 74, 36, .18);
+  transition: color 300ms ease;
+}
+
+.countdown-unit-label {
+  margin-top: 8px;
+  font-family: "Allura", "Segoe Script", "Brush Script MT", cursive;
+  font-size: clamp(20px, 2vw, 30px);
+  color: #8a6a3f;
+  line-height: 1;
+}
+
+.countdown-colon {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(34px, 6vw, 72px);
+  font-weight: 700;
+  color: #c8a874;
+  transform: translateY(-6px);
+  line-height: 1;
+}
+
+.countdown-display.is-finished .countdown-number {
+  color: #b5495b;
+}
+
+@media (max-width: 700px) {
+  .countdown-display {
+    gap: 4px;
+    flex-wrap: wrap;
+    row-gap: 18px;
+  }
+  .countdown-unit { min-width: 72px; }
+  .countdown-colon { display: none; }
+}
+
+/* ---------------------------------------------------------------------
+   Popup central al llegar a 0 (ventana modal, no notificación)
+   ------------------------------------------------------------------- */
+.countdown-popup-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(70, 52, 34, 0);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 320ms ease, background 320ms ease, visibility 0s linear 320ms;
+}
+
+.countdown-popup-overlay.is-visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  background: rgba(70, 52, 34, .38);
+  transition: opacity 320ms ease, background 320ms ease;
+}
+
+.countdown-popup {
+  position: relative;
+  width: min(380px, 100%);
+  padding: 42px 30px 34px;
+  background: #fff9f2;
+  border-radius: 22px;
+  box-shadow:
+    0 24px 50px rgba(107, 74, 36, .28),
+    0 6px 16px rgba(107, 74, 36, .14);
+  text-align: center;
+  transform: scale(.7) translateY(18px);
+  opacity: 0;
+}
+
+.countdown-popup.is-entering {
+  animation: countdown-popup-in 420ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.countdown-popup.is-leaving {
+  animation: countdown-popup-out 300ms cubic-bezier(0.55, 0, 0.2, 1) forwards;
+}
+
+@keyframes countdown-popup-in {
+  0% { transform: scale(.7) translateY(18px); opacity: 0; }
+  60% { transform: scale(1.04) translateY(-2px); opacity: 1; }
+  100% { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+@keyframes countdown-popup-out {
+  0% { transform: scale(1) translateY(0); opacity: 1; }
+  100% { transform: scale(.75) translateY(14px); opacity: 0; }
+}
+
+.countdown-popup-close {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  width: 30px;
+  height: 30px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(107, 74, 36, .08);
+  color: #6b4a24;
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  -webkit-tap-highlight-color: transparent;
+}
+.countdown-popup-close:hover {
+  background: rgba(107, 74, 36, .16);
+}
+
+.countdown-popup-heart {
+  font-size: 40px;
+  color: #b5495b;
+  margin-bottom: 10px;
+}
+
+.countdown-popup-text {
+  margin: 0;
+  font-family: "Allura", "Segoe Script", "Brush Script MT", cursive;
+  font-size: clamp(38px, 6vw, 56px);
+  font-weight: 400;
+  color: #5f4527;
+  line-height: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .countdown-popup-overlay { transition: none; }
+  .countdown-popup.is-entering,
+  .countdown-popup.is-leaving { animation: none; transform: none; opacity: 1; }
+}

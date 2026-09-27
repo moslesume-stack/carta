@@ -1,10 +1,20 @@
+  <div class="readme-bg-glow" aria-hidden="true"></div>
+
   <div class="readme-confetti" aria-hidden="true">
-    <span>♡</span><span>✦</span><span>♡</span><span>✦</span><span>♡</span><span>✦</span><span>♡</span><span>✦</span>
+    <span>♡</span><span>✦</span><span>♡</span><span>✦</span><span>♡</span><span>✦</span><span>♡</span><span>✦</span><span>♡</span><span>✦</span>
   </div>
+
+  <div class="readme-heading" aria-hidden="true">
+    <span class="sparkle">✧</span>
+    <span class="readme-heading-text">para ti</span>
+    <span class="sparkle">✧</span>
+  </div>
+
   <div class="first-page-inner">
-    <div class="memory-card readme-card">
+    <div class="memory-card readme-card" id="readmeTiltCard">
       <div class="memory-dots"></div>
       <div class="washi-tape" aria-hidden="true"></div>
+      <div class="readme-photo-glow" aria-hidden="true"></div>
       <img class="memory-photo readme-photo"
            src="assets/img/readme-photo.png"
            alt="Recuerdo"
@@ -13,11 +23,15 @@
       <div class="sticker-bear" aria-hidden="true">🐻</div>
       <div class="sticker-star" aria-hidden="true">★</div>
       <div class="sticker-sparkle" aria-hidden="true">✦</div>
+      <button class="readme-secret-btn" id="readmeSecretBtn" type="button" aria-label="toca aquí">
+        <span>♡</span>
+      </button>
     </div>
 
     <div class="readme-copy-frame">
       <div class="scallop-bg" aria-hidden="true"><svg></svg></div>
-      <div class="memory-copy readme-copy">
+      <div class="readme-copy-shine" aria-hidden="true"></div>
+      <div class="memory-copy readme-copy" id="readmeCopyScroll">
       <p>Quería escribirte esto porque hay muchas cosas que quizá no te he dicho hasta ahora, pero que sí pienso y siento. Por eso te hice esta carta, expresandote lo que generas en mí.</p>
       <p>Lo primero, tengo que decir que eres demasiado inquieta. Siempre estás por ahí moviéndote por todas partes, y no sé por qué, pero me da muchísima risa. Es una de esas cosas tuyas que ya son parte de ti y me hacen dar gracia.</p>
       <p>También me gusta mucho cuando haces cosas sin que yo te las pida. Como la carta de la otra vez, o cuando decidiste borrar a las personas que tenías sin que tuviera que decirte algo. Son detalles que quizá pueden parecer pequeños, pero para mí significan bastante porque siento que salen de ti y no porque yo te esté obligando a que los hagas.</p>
@@ -35,4 +49,17 @@
     </div>
   </div>
 
-  <button class="first-page-back page-back" type="button">back</button>
+  <div class="readme-burst-layer" id="readmeBurstLayer" aria-hidden="true"></div>
+
+  <div class="readme-secret-message" id="readmeSecretMessage" aria-hidden="true">
+    <div class="readme-secret-card">
+      <span class="readme-secret-close" id="readmeSecretClose">✕</span>
+      <div class="readme-secret-heart">♡</div>
+      <p>encontraste el corazón secreto...</p>
+      <p class="readme-secret-small">te amo más de lo que cualquier carta podría decir ♡</p>
+    </div>
+  </div>
+
+  <button class="first-page-back page-back" type="button">
+    <span class="readme-back-ribbon">volver</span>
+  </button>
