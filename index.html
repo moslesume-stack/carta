@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Para ti</title>
+
+<!-- Estilos separados por módulo: base (compartido) + uno por página.
+     Cada página solo necesita su propio archivo de estilos, además del
+     base compartido (fondo, partículas, sobre, iconos, layout genérico
+     de las páginas). -->
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/readme-page.css">
+<link rel="stylesheet" href="css/us-page.css">
+<link rel="stylesheet" href="css/playlist-page.css">
+</head>
+<body>
+
+<div id="particles"></div>
+
+<div class="envelope-wrap">
+  <div class="desktop-title" aria-label="mi bebecita">Pick any one!</div>
+  <img class="envelope-photo" src="assets/img/envelope.png" alt="Sobre - abrir">
+  <div class="icons-row" id="iconsRow">
+    <button class="icon-btn" id="iconMessage" type="button" aria-label="Read Me" data-page-target="firstPage">
+      <img src="assets/img/icon-readme.png" alt="" draggable="false" class="image-2-zoom">
+      <span class="icon-label">Read Me</span>
+    </button>
+    <button class="icon-btn" id="iconMemories" type="button" aria-label="Us" data-page-target="usPage">
+      <img src="assets/img/icon-us.png" alt="" draggable="false">
+      <span class="icon-label">Us</span>
+    </button>
+    <button class="icon-btn" id="iconMusic" type="button" aria-label="Playlist" data-page-target="playlistPage">
+      <img src="assets/img/icon-playlist.png" alt="" draggable="false">
+      <span class="icon-label">Playlist</span>
+    </button>
+  </div>
+</div>
+
+<!-- Las 3 páginas empiezan vacías: main.js hace fetch() de pages/*.html y
+     rellena cada una la primera vez que su icono es presionado, llamando
+     luego al módulo JS propio de esa página (js/modules/<pagina>.js) si
+     tiene alguno. Así cada icono carga únicamente su propio contenido. -->
+<section class="first-page icon-page readme-page" id="firstPage" aria-hidden="true"></section>
+<section class="first-page icon-page us-page" id="usPage" aria-hidden="true"></section>
+<section class="first-page icon-page playlist-page" id="playlistPage" aria-hidden="true"></section>
+
+<script type="module" src="js/main.js"></script>
+
+</body>
+</html>
